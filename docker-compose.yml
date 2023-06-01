@@ -1,0 +1,25 @@
+version: '3.8'
+ 
+services:
+  app:
+    build: 
+      args:
+        user: talisson
+        uid: 5454
+      context: ./
+      dockerfile: Dockerfile
+
+      
+    image: laravel-app
+    working_dir: /var/www/
+    restart: always
+    volumes:
+      - ./:/var/www/
+    networks:
+     - docker-laravel
+
+
+
+networks:
+  docker-laravel:
+    driver: bridge
