@@ -14,7 +14,8 @@ class DetailPlanController extends Controller
     {
         return [
             $this->plan = $plan, $this->detailPlan = $DetailPlan
-        ,$this->middleware(['can:plans'])];
+        , $this->middleware(['can:plans'])
+    ];
         
     }
     /**

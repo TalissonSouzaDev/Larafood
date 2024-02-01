@@ -14,7 +14,7 @@ class PermissionController extends Controller
     {
 
     $this->permission = $permission;
-    $this->middleware(['can:permission']);
+    //$this->middleware(['can:permission']);
         
     }
     /**

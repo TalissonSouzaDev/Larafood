@@ -298,26 +298,30 @@ return [
         [
             'text' => 'Empresa',
             'url'  => 'admin/tenant',
-            'icon' => 'fas fa-building'
+            'icon' => 'fas fa-building',
+            
             
         ],
      
         [
             'text' => 'planos',
             'url'  => 'admin/plan',
-            'icon' => 'fas fa-list-alt'
+            'icon' => 'fas fa-list-alt',
+            
             
         ],
         [
             'text' => 'Perfis',
             'url'  => 'admin/profile',
-            'icon' => 'fas fa-address-book'
+            'icon' => 'fas fa-address-book',
+            'can' => 'profiles'
             
         ],
         [
             'text' => 'Permissão',
             'url'  => 'admin/permission',
-            'icon' => 'fas fa-lock'
+            'icon' => 'fas fa-lock',
+            'can' => 'permissions'
             
         ]
         ,
@@ -331,19 +335,22 @@ return [
         [
             'text' => 'Categorias',
             'url'  => 'admin/category',
-            'icon' => 'fas fa-layer-group'
+            'icon' => 'fas fa-layer-group',
+            'can' => 'categorys'
             
         ],
         [
             'text' => 'Produtos',
             'url'  => 'admin/product',
-            'icon' => 'fas fa-hamburger'
+            'icon' => 'fas fa-hamburger',
+            'can' => 'products'
             
         ],
         [
             'text' => 'Mesa',
             'url'  => 'admin/table',
-            'icon' => 'fas fa-tablet'
+            'icon' => 'fas fa-tablet',
+            'can' => 'tables'
             
         ]
         

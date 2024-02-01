@@ -12,7 +12,8 @@ class CategoryController extends Controller
     public function __construct(category $category)
     {
 
-        return [$this->category = $category,$this->middleware(['can:categories']) ];
+        return [$this->category = $category,$this->middleware(['can:categories']) 
+    ];
 
         
     }

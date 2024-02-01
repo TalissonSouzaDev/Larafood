@@ -15,7 +15,8 @@ class ProductController extends Controller
 
         return [
             $this->product = $product,
-            $this->middleware(['can:products']) ];
+            $this->middleware(['can:products']) 
+        ];
 
         
     }

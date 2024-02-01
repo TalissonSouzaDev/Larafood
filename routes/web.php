@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::prefix('admin')->middleware('auth')->group(function(){
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::prefix('admin/')->middleware('auth')->group(function(){
 
 
    # planos
@@ -107,3 +107,9 @@ Route::get('Larafood/home',[SiteController::class,'index'])->name('site.home');
 # rotas de fallback
 Route::fallback(function(){return redirect()->route('site.home');});
 Auth::routes();
+
+Route::get('/test',function()
+{
+
+  dd(auth()->user()->isAdmin());
+});

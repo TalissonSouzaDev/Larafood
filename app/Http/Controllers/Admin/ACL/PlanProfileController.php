@@ -16,7 +16,7 @@ class PlanProfileController extends Controller
         return [
             $this->plan = $plan,
             $this->profile= $profile,
-            $this->middleware(['can:plans','can:profiles'])
+            //$this->middleware(['can:plans','can:profiles'])
         ];
         
     }

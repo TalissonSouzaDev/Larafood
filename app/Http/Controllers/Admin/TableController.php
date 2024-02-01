@@ -14,7 +14,8 @@ class TableController extends Controller
 
         return [
             $this->table = $table,
-        $this->middleware(['can:tables']) ];
+            $this->middleware(['can:tables']) 
+    ];
 
         
     }

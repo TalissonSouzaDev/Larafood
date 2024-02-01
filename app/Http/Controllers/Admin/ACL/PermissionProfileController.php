@@ -13,7 +13,8 @@ class PermissionProfileController extends Controller
     protected $permission,$profile;
     public function __construct(Profile $profile, Permission $permission)
     {
-        return [$this->profile = $profile,$this->permission = $permission,$this->middleware(['can:permission','can:profile'])];
+        return [$this->profile = $profile,$this->permission = $permission,//$this->middleware(['can:permission','can:profile'])
+    ];
         
     }
     public function permission($idprofile){

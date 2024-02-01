@@ -12,7 +12,8 @@ class CategoryProductController extends Controller
     protected $category,$product;
     public function __construct(Product $product, category $category)
     {
-        return [$this->product = $product,$this->category = $category,$this->middleware(['can:categories','can:products'])];
+        return [$this->product = $product,$this->category = $category,$this->middleware(['can:categories','can:products'])
+    ];
         
     }
     public function categories($idproduct){

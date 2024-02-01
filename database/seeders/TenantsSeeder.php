@@ -21,7 +21,6 @@ class TenantsSeeder extends Seeder
             'cnpj'=> '2548787545454',
             'name'=> 'talissonsouza',
             'email' => 'talissonsouza@gmail.com',
-            'plan_id' => '1'
         ]);
     }
 }

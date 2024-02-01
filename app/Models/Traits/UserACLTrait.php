@@ -7,8 +7,8 @@ trait UserACLTrait {
 
 
     public function permissions(){
-        $tenat = $this->tenant()->first();
-        $plan = $tenat->plan();
+        $tenat = $this->tenant;
+        $plan = $tenat->plan;
         $permissions = [];
 
         foreach($plan->profile as $profile){
@@ -17,12 +17,12 @@ trait UserACLTrait {
             }
         }
 
-        return  $permission;
+        return  $permissions;
     }
 
 
 
-    public function hasPermission(String $permissionname): bool {
+    public function hasPermission(string $permissionname): bool {
 
         return in_array($permissionname,$this->permissions());
     }
