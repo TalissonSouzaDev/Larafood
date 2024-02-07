@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\ACL\PermissionProfileController;
 use App\Http\Controllers\Admin\ACL\PlanProfileController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
+use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use App\Http\Controllers\Admin\PlanController;
@@ -94,6 +95,10 @@ Route::get('Tenant/{uuid}/show',[TenantController::class,'show'])->name('tenant.
 Route::get('Tenant/{uuid}/edit',[TenantController::class,'edit'])->name('tenant.edit');
 Route::put('Tenant/{uuid}/update',[TenantController::class,'update'])->name('tenant.update');
 
+
+#Role
+Route::resource('role',RoleController::class);
+Route::match(['get', 'post'],'role/filter',[RoleController::class,'filter'])->name("role.filter");
 
 
 });

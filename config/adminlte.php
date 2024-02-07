@@ -325,6 +325,15 @@ return [
             
         ]
         ,
+
+        [
+            'text' => 'Cargo',
+            'url'  => 'admin/role',
+            'icon' => 'fas fa-lock',
+            'can' => 'roles'
+            
+        ]
+        ,
         [
             'text' => 'Usuarios',
             'url'  => 'admin/user',

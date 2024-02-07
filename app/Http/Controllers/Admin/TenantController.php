@@ -42,8 +42,8 @@ class TenantController extends Controller
         $empresa = $this->authuser();
         $data = $request->all();
 
-       // dd($tenant);
-        //dd($request->logo);
+       //dd($tenant);
+       // dd($request->logo);
  
 
         if(!empty($tenant->logo)){
@@ -57,7 +57,7 @@ class TenantController extends Controller
        }
 
        
-        $tenant->update($data)->where("uuid",$tenant->uuid);
+        $tenant->update($data);
 
         return redirect()->route('tenant.index')->with("success",'Empresa atualizada com sucesso');
     }
