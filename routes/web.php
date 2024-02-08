@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\ACL\PermissionProfileController;
+use App\Http\Controllers\Admin\ACL\PermissionRoleController;
 use App\Http\Controllers\Admin\ACL\PlanProfileController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\ACL\RoleController;
@@ -99,6 +100,15 @@ Route::put('Tenant/{uuid}/update',[TenantController::class,'update'])->name('ten
 #Role
 Route::resource('role',RoleController::class);
 Route::match(['get', 'post'],'role/filter',[RoleController::class,'filter'])->name("role.filter");
+
+#role X permission
+Route::get('role/{id}/permission',[PermissionRoleController::class,'permission'])->name('role.permission');
+Route::match(['get','post'],'role/{id}/permission/create',[PermissionRoleController::class,'permissionAvailable'])->name('role.permission.available');
+Route::post('role/{id}/permission/store',[PermissionRoleController::class,'attachpermissionrole'])->name('role.permission.attach');
+Route::get('role/{id}/permission/{idpermission}/detach',[PermissionRoleController::class,'detachpermissionrole'])->name('role.permission.detach');
+
+
+
 
 
 });

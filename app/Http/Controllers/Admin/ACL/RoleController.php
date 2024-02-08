@@ -49,10 +49,10 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
      
-
+            //dd($request->all());
         $this->role->create($request->all());
     
-        return redirect()->route('role.index')->with('sucess','Permissão adicionado com sucesso');
+        return redirect()->route('role.index')->with('sucess','Cargo adicionado com sucesso');
        
       
     }
