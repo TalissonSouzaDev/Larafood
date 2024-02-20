@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ACL\PermissionRoleController;
 use App\Http\Controllers\Admin\ACL\PlanProfileController;
 use App\Http\Controllers\Admin\ACL\ProfileController;
 use App\Http\Controllers\Admin\ACL\RoleController;
+use App\Http\Controllers\Admin\ACL\RoleUserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DetailPlanController;
 use App\Http\Controllers\Admin\PlanController;
@@ -69,6 +70,12 @@ Route::get('plan/{id}/profile/{idpermission}/detach',[PlanProfileController::cla
 #user
 Route::resource('user',UserController::class);
 Route::match(['get', 'post'],'user/filter',[UserController::class,'filter'])->name("user.filter");
+
+#role X user
+Route::get('role/{id}/user',[RoleUserController::class,'user'])->name('role.user');
+Route::match(['get','post'],'role/{id}/user/create',[RoleUserController::class,'userAvailable'])->name('role.user.available');
+Route::post('role/{id}/user/store',[RoleUserController::class,'attachroleuser'])->name('role.user.attach');
+Route::get('role/{id}/user/{idpermission}/detach',[RoleUserController::class,'detachroleuser'])->name('role.user.detach');
 
 
 #category

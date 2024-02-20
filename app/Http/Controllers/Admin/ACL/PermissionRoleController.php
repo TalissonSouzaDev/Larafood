@@ -20,10 +20,10 @@ class PermissionRoleController extends Controller
     }
     public function permission($idrole){
 
-        if(!$role = $this->role->with('permission')->where('id',$idrole)->first()){
+        if(!$role = $this->role->with('permissions')->where('id',$idrole)->first()){
             return redirect()->back();
         }
-        $permission = $role->permission()->paginate(10);
+        $permission = $role->permissions()->paginate(10);
 
         return view('Admin.pages.role.permission.permission',compact('role','permission'));
     }
@@ -40,7 +40,7 @@ class PermissionRoleController extends Controller
 
 
     public function attachpermissionrole(Request $request,$idrole){
-        if(!$role = $this->role->with('permission')->where('id',$idrole)->first()){
+        if(!$role = $this->role->with('permissions')->where('id',$idrole)->first()){
             return redirect()->back();
         }
         if(!isset($request->permission) || empty($request->permission) ){

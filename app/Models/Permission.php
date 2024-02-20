@@ -19,4 +19,8 @@ class Permission extends Model
 
     public function profile(){
         return $this->belongsToMany(Profile::class);    }
+
+        
+    public function role(){
+        return $this->belongsToMany(Role::class);    }
 }

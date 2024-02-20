@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function __construct(Profile $profile)
     {
 
-    $this->profile = $profile;// $this->middleware(['can:profile']);
+    $this->profile = $profile; $this->middleware(['can:profile']);
         
     }
     /**

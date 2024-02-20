@@ -41,11 +41,7 @@ class TenantController extends Controller
         $tenant = $this->tenant->where('uuid',$uuid)->first();
         $empresa = $this->authuser();
         $data = $request->all();
-
-       //dd($tenant);
-       // dd($request->logo);
- 
-
+        
         if(!empty($tenant->logo)){
             Storage::disk('public')->delete("empresa/{$empresa}/".$tenant->logo);
         }

@@ -39,6 +39,7 @@
                      
                         <a href="{{route('user.show',[$users->id])}}" class="btn btn-warning">Ver</a>
                         <a href="{{route('user.edit',[$users->id])}}" class="btn btn-info">Edit</a>
+                        <a href="{{route('role.user',[$users->id])}}" class="btn btn-warning"><i class="fas fa-lock"></i></a>
                     
                     </td>
                  

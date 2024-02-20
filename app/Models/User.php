@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->belongsTo(Tenant::class,'tenant_id','uuid');
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(role::class);
+    }
+
     
 
     public function filter($filter = null){
@@ -59,4 +64,19 @@ class User extends Authenticatable
         return $resultado;
 
     }
+
+
+    public function rolesAvailable($id,$filter = null){
+     
+        $role = role::whereNotIn('roles.id',function($query) use ($id){
+            $query->select('role_user.role_id');
+            $query->from('role_user');
+            $query->whereRaw("role_user.user_id={$id}");
+        })->where('roles.name','LIKE',"%{$filter}%")->paginate();
+   
+
+        return  $role;
+
+    
+}
 }

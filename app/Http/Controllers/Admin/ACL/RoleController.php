@@ -103,7 +103,7 @@ class RoleController extends Controller
             $roleShow = $this->role->where('id',$id)->first();
             $role = !empty($roleShow) ? $roleShow : [];
             $role->update($request->all());
-            return !empty($role) ? redirect()->route('role.index')->with('sucess','Permissão atualizado com sucesso'): redirect()->back()->with('erros','Ação não encontrada');
+            return !empty($role) ? redirect()->route('role.index')->with('sucess','Cargo atualizado com sucesso'): redirect()->back()->with('erros','Ação não encontrada');
             
         
       
@@ -121,7 +121,7 @@ class RoleController extends Controller
             $roleShow = $this->role->where('id',$id)->first();
             $role = !empty($roleShow) ? $roleShow : [];
             $role->delete();
-            return !empty($role) ? redirect()->route('role.index')->with('sucess','Permissão deletado com sucesso'): redirect()->back()->with('erros','Ação não encontrada');
+            return !empty($role) ? redirect()->route('role.index')->with('sucess','Cargo deletado com sucesso'): redirect()->back()->with('erros','Ação não encontrada');
            
     }
 

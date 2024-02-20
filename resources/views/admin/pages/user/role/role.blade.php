@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', "Permissão do perfil")
+@section('title', "Cargo ao Usuario")
 
 @section('content_header')
-    <h1>Permissão do Cargo  {{$role->name}} <a href="{{route("role.permission.available",[$role->id])}}" class="btn btn-dark">ADD NOVA PERMISSÃO</a></h1>
+    <h1>Cargo ao Usuario  {{$user->name}} <a href="{{route("user.role.available",[$user->id])}}" class="btn btn-dark">ADD NOVO CARGO</a></h1>
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route("admin.index")}}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{route("permission.index")}}">Perfil</a></li>
+        <li class="breadcrumb-item active"><a href="{{route("role.index")}}">Perfil</a></li>
     </ol>
 @stop
 
@@ -15,7 +15,7 @@
    <div class="card">
     @include('admin.alert.index')
     <div class="card-header">
-    {{--@include('admin.pages.role.filter') --}}
+    {{--@include('admin.pages.user.filter') --}}
     </div>
     <div class="card-body">
         <table class="table table-condensed">
@@ -31,11 +31,11 @@
             
        
             <tbody>
-                @foreach ($permission as $permissions)
+                @foreach ($role as $roles)
                 <tr>
-                    <td>{{$permissions->name}}</td>
+                    <td>{{$roles->name}}</td>
                     <td>
-                     <a href="{{route('role.permission.detach',[$role->id,$permissions->id])}}" class="btn btn-danger">Desvincular</a>
+                     <a href="{{route('user.role.detach',[$user->id,$roles->id])}}" class="btn btn-danger">Desvincular</a>
                     
                     </td>
                  
@@ -47,10 +47,10 @@
 
     <div class="card-footer">
        @if (isset($filter))
-       {{$permission->appends([$filter])->links()}}
+       {{$role->appends([$filter])->links()}}
            
        @else
-       {{$permission->links()}}
+       {{$role->links()}}
            
        @endif
     </div>

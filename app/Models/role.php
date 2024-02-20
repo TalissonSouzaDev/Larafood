@@ -16,12 +16,17 @@ class role extends Model
         return $this->belongsToMany(Permission::class);
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function profileAvailable($id,$filter = null){
      
         $permission = Permission::whereNotIn('id',function($query) use ($id){
-            $query->select('permission_role.permission_id');
-            $query->from('permission_role');
-            $query->whereRaw("permission_role.role_id={$id}");
+            $query->select('permissions_role.permission_id');
+            $query->from('permissions_role');
+            $query->whereRaw("permissions_role.role_id={$id}");
         })->where('permissions.name','LIKE',"%{$filter}%")->paginate();
    
 
