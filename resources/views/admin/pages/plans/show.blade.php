@@ -8,6 +8,7 @@
 @section("content")
     <div class="card">
         <div class="card-body">
+            @include("admin.alert.index")
             <ul>
                 <li><strong>Nome:</strong> {{$plan->name}}</li>
                 <li><strong>URL:</strong> {{$plan->url}}</li>

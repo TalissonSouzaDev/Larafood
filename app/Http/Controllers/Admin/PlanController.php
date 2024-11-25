@@ -1,10 +1,12 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePlan;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+
 
 class PlanController extends Controller
 {
@@ -54,6 +56,9 @@ class PlanController extends Controller
         if(!$plan) {
             return redirect()->back();
         }
+        if ($plan->detail->count() > 0) {
+            return redirect()->back()->with("error","Existe detalhes vinculados a esse plano, portando remove os detalhes");
+        } 
         $plan->delete();
 
         return redirect()->route("plan.index");

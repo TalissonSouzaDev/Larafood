@@ -2,7 +2,7 @@
 
 @section("title","Planos")
 @section("content_header")
-    <h1>Planos <a href="{{route("plan.create")}}" class="btn btn-dark">ADD</a></h1>
+    <h1> Detalhe do Plano {{$plan->name}} <a href="{{route("plan.create")}}" class="btn btn-dark">ADD</a></h1>
 @stop
 
 @section("content")
@@ -10,7 +10,7 @@
         <div class="card-header">
             <form action="{{route("plan.search")}}" method="POST" class="form form-inline">
                 @csrf
-                <input type="text" name="filter" placheholder="Nome, Preço o descrição" class="form-control"/>
+                <input type="text" name="filter" placheholder="buscar por Nome" class="form-control"/>
                 <button type="submit" class="btn btn-dark">Filtrar</button>
             </form>
         </div>
@@ -19,25 +19,22 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Preço</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                @foreach($plan as $plans)
+                @foreach($detail as $details)
                     <tr>
-                        <td>{{$plans->name}}</td>
-                        <td>{{number_format($plans->price,2,",",".")}}</td>
+                        <td>{{$details->name}}</td>
                         <td style="">
-                            <a href="{{route("detail.plan.index",$plan->url)}}" class="btn btn-info">Detalhes</a>
-                            <a href="{{route("plan.show",$plans->url)}}" class="btn btn-info">Ver</a>
-                            <a href="{{route("plan.edit",$plans->url)}}" class="btn btn-warning">edit</a>
+                            <a href="{{route("detail.plan.edit",[$plan->url,$details->id])}}" class="btn btn-warning">edit</a>
+                            <a href="{{route("detail.plan.destroy",[$plan->url,$details->id])}}" class="btn btn-info">Ver</a>
                         </td>
                     </tr>  
                 @endforeach
             </table>
         </div>
         <div class="card-footer">
-            {!! $plans->links() !!}
+            {!! $detail->links() !!}
         </div>
     </div>
 @stop
