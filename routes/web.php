@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\DetailPlanController;
-use App\Http\Controllers\PlanController;
+use App\Http\Controllers\Admin\{
+    DetailPlanController,
+    ProfileController,
+    PlanController
+};
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("admin")->group(function() {
 
-    /**
-     * Route DetailPlan
-     */
-    Route::delete("/plans/{url}/details/{id_detail}/destroy",[DetailPlanController::class,"destroy"])->name("detail.plan.destroy");
-    Route::put("/plans/{url}/details/{id_detail}/update",[DetailPlanController::class,"update"])->name("detail.plan.update");
-    Route::get("/plans/{url}/details/{id_detail}/edit",[DetailPlanController::class,"edit"])->name("detail.plan.edit");
-    Route::post("/plans/{url}/details",[DetailPlanController::class,"store"])->name("detail.plan.store");
-    Route::get("/plans/{url}/detail/create",[DetailPlanController::class,"create"])->name("detail.plan.create");
-    Route::get("/plans/{url}/details",[DetailPlanController::class,"index"])->name("detail.plan.index");
 
     /**
      * 
@@ -39,6 +34,30 @@ Route::prefix("admin")->group(function() {
     Route::post("/plans/store",[PlanController::class,"store"])->name("plan.store");
     Route::put("/plan/update/{url}",[PlanController::class,"update"])->name("plan.update");
     Route::delete("/plan/{id}",[PlanController::class,"destroy"])->name("plan.destroy");
+
+    /**
+     * Route DetailPlan
+     */
+    Route::delete("/plans/{url}/details/{id_detail}/destroy",[DetailPlanController::class,"destroy"])->name("detail.plan.destroy");
+    Route::put("/plans/{url}/details/{id_detail}/update",[DetailPlanController::class,"update"])->name("detail.plan.update");
+    Route::get("/plans/{url}/details/{id_detail}/edit",[DetailPlanController::class,"edit"])->name("detail.plan.edit");
+    Route::post("/plans/{url}/details",[DetailPlanController::class,"store"])->name("detail.plan.store");
+    Route::get("/plans/{url}/detail/create",[DetailPlanController::class,"create"])->name("detail.plan.create");
+    Route::get("/plans/{url}/details",[DetailPlanController::class,"index"])->name("detail.plan.index");
+
+
+    /**
+     * 
+     * Route Profile
+     */
+    Route::match(["POST","GET"],"/profile/search",[ProfileController::class,"search"])->name("profile.search");
+    Route::get("/profiles",[ProfileController::class,"index"])->name("profile.index");
+    Route::get("/profile/{url}",[ProfileController::class,"show"])->name("profile.show");
+    Route::get("/profile/create",[ProfileController::class,"create"])->name("profile.create");
+    Route::get("/profile/edit/{url}",[ProfileController::class,"edit"])->name("profile.edit");
+    Route::post("/profiles/store",[ProfileController::class,"store"])->name("profile.store");
+    Route::put("/profile/update/{url}",[ProfileController::class,"update"])->name("profile.update");
+    Route::delete("/profile/{id}",[ProfileController::class,"destroy"])->name("profile.destroy");
 });
 
 Route::get('/', function () {

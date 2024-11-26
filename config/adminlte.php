@@ -313,12 +313,13 @@ return [
         // Sidebar items:
         [
             'text' => 'Planos',
-            'url' => 'admin/plans'
+            'url' => 'admin/plans',
+            "icon" => 'fas fa-list-alt'
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Perfil',
+            'url' => 'admin/profile',
+            "icon" => 'fas fa-address-book'
         ],
     ],
 

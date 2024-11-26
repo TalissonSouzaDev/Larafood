@@ -1,14 +1,14 @@
 @extends("adminlte::page")
 
-@section("title","Planos")
+@section("title","Perfil")
 @section("content_header")
-    <h1>Planos <a href="{{route("plan.create")}}" class="btn btn-dark">ADD</a></h1>
+    <h1>Perfils <a href="{{route("profile.create")}}" class="btn btn-dark">ADD</a></h1>
 @stop
 
 @section("content")
     <div class="card">
         <div class="card-header">
-            <form action="{{route("plan.search")}}" method="POST" class="form form-inline">
+            <form action="{{route("profile.search")}}" method="POST" class="form form-inline">
                 @csrf
                 <input type="text" name="filter" placheholder="Nome, Preço o descrição" class="form-control"/>
                 <button type="submit" class="btn btn-dark">Filtrar</button>
@@ -23,21 +23,20 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                @foreach($plan as $plans)
+                @foreach($profile as $profiles)
                     <tr>
-                        <td>{{$plans->name}}</td>
-                        <td>{{number_format($plans->price,2,",",".")}}</td>
+                        <td>{{$profiles->name}}</td>
                         <td style="">
-                            <a href="{{route("detail.plan.index",$plan->url)}}" class="btn btn-info">Detalhes</a>
-                            <a href="{{route("plan.show",$plans->url)}}" class="btn btn-info">Ver</a>
-                            <a href="{{route("plan.edit",$plans->url)}}" class="btn btn-warning">edit</a>
+                            <a href="{{route("detail.profile.index",$profile->id)}}" class="btn btn-info">Detalhes</a>
+                            <a href="{{route("profile.show",$profiles->id)}}" class="btn btn-info">Ver</a>
+                            <a href="{{route("profile.edit",$profiles->id)}}" class="btn btn-warning">edit</a>
                         </td>
                     </tr>  
                 @endforeach
             </table>
         </div>
         <div class="card-footer">
-            {!! $plan->links() !!}
+            {!! $profile->links() !!}
         </div>
     </div>
 @stop
