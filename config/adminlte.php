@@ -321,6 +321,11 @@ return [
             'url' => 'admin/profile',
             "icon" => 'fas fa-address-book'
         ],
+        [
+            'text' => 'Permissóes',
+            'url' => 'admin/permisson',
+            "icon" => 'fas fa-address-book'
+        ],
     ],
 
     /*

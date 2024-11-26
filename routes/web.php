@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\{
     DetailPlanController,
+    PermissionController,
     ProfileController,
     PlanController
 };
@@ -58,6 +59,19 @@ Route::prefix("admin")->group(function() {
     Route::post("/profiles/store",[ProfileController::class,"store"])->name("profile.store");
     Route::put("/profile/update/{url}",[ProfileController::class,"update"])->name("profile.update");
     Route::delete("/profile/{id}",[ProfileController::class,"destroy"])->name("profile.destroy");
+
+     /**
+     * 
+     * Route Permission
+     */
+    Route::match(["POST","GET"],"/permission/search",[PermissionController::class,"search"])->name("permission.search");
+    Route::get("/permissions",[PermissionController::class,"index"])->name("permission.index");
+    Route::get("/permission/{url}",[PermissionController::class,"show"])->name("permission.show");
+    Route::get("/permission/create",[PermissionController::class,"create"])->name("permission.create");
+    Route::get("/permission/edit/{url}",[PermissionController::class,"edit"])->name("permission.edit");
+    Route::post("/permissions/store",[PermissionController::class,"store"])->name("permission.store");
+    Route::put("/permission/update/{url}",[PermissionController::class,"update"])->name("permission.update");
+    Route::delete("/permission/{id}",[PermissionController::class,"destroy"])->name("permission.destroy");
 });
 
 Route::get('/', function () {
