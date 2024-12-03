@@ -1,8 +1,8 @@
 @extends("adminlte::page")
 
-@section("title","Perfil")
+@section("title","Permissões do perfil {$profile->name}")
 @section("content_header")
-    <h1>Perfils <a href="{{route("profile.create")}}" class="btn btn-dark">ADD</a></h1>
+    <h1>Permissões do perfil {{$profile->name}} <a href="{{route("profile.permission.available",$profile->id)}}" class="btn btn-dark">ADD NOVA PERMISSÃO</a></h1>
 @stop
 
 @section("content")
@@ -22,21 +22,18 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                @foreach($profile as $profiles)
+                @foreach($permissions as $permission)
                     <tr>
-                        <td>{{$profiles->name}}</td>
+                        <td>{{$permission->name}}</td>
                         <td style="">
-                            <a href="{{route("detail.profile.index",$profile->id)}}" class="btn btn-info">Detalhes</a>
-                            <a href="{{route("profile.show",$profiles->id)}}" class="btn btn-info">Ver</a>
-                            <a href="{{route("profile.edit",$profiles->id)}}" class="btn btn-warning">edit</a>
-                            <a href="{{route("profiles.permission",$profiles->id)}}" class="btn btn-warning"><i class="fas fa-address-book'"></i></a>
+                            <a href="{{route("profile.permission.detach",[$profile->id,$permission->id])}}" class="btn btn-info">Desvincular</a>
                         </td>
                     </tr>  
                 @endforeach
             </table>
         </div>
         <div class="card-footer">
-            {!! $profile->links() !!}
+            {!! $permissions->links() !!}
         </div>
     </div>
 @stop

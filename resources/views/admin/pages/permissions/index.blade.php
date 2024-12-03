@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{$permissions->name}}</td>
                         <td style="">
-                            <a href="{{route("detail.permission.index",$permission->id)}}" class="btn btn-info">Detalhes</a>
+                            <a href="{{route("permission.profile",$permission->id)}}" class="btn btn-info">Perfils</a>
                             <a href="{{route("permission.show",$permissions->id)}}" class="btn btn-info">Ver</a>
                             <a href="{{route("permission.edit",$permissions->id)}}" class="btn btn-warning">edit</a>
                         </td>

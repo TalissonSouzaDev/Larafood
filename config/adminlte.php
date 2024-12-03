@@ -322,7 +322,7 @@ return [
             "icon" => 'fas fa-address-book'
         ],
         [
-            'text' => 'Permissóes',
+            'text' => 'Permissões',
             'url' => 'admin/permisson',
             "icon" => 'fas fa-address-book'
         ],

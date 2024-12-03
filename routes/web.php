@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\{
     ProfileController,
     PlanController
 };
-
+use App\Http\Controllers\Admin\ACL\PermissionProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,6 +72,16 @@ Route::prefix("admin")->group(function() {
     Route::post("/permissions/store",[PermissionController::class,"store"])->name("permission.store");
     Route::put("/permission/update/{url}",[PermissionController::class,"update"])->name("permission.update");
     Route::delete("/permission/{id}",[PermissionController::class,"destroy"])->name("permission.destroy");
+
+  /**
+     * 
+     * Route Permission x Profile
+     */
+    Route::get("/permissions/{id}",[PermissionProfileController::class,"profile"])->name("permission.profile");
+     Route::get("/profile/{id}/permission/{idpermission}/detach",[PermissionProfileController::class,"detachPermissionsProfile"])->name("profile.permission.detach");
+     Route::post("/profile/{id}/permissions/store",[PermissionProfileController::class,"attachPermissionsProfile"])->name("profile.permission.attach");
+     Route::any("/profile/{id}/permissions/create",[PermissionProfileController::class,"permissionsAvailable"])->name("profile.permission.available");
+     Route::get("/profile/{id}/permissions",[PermissionProfileController::class,"permissions"])->name("profile.permission");
 });
 
 Route::get('/', function () {
